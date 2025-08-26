@@ -81,6 +81,14 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `${balance} $`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accounts) {
   accounts.forEach(acc => {
     acc.username = acc.owner
@@ -105,3 +113,17 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const calcAverageHumanAge = ages => {
+  let res = ages
+    .map(age => {
+      if (age <= 2) return 2 * age;
+      else return 4 * age + 16;
+    })
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+  console.log(res);
+};
+
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
